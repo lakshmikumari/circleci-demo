@@ -9,7 +9,7 @@ def Hello():
 
 
 def parseExcel():
-    excel_data_df = pd.read_excel('Alerts.xlsx', sheet_name='UCSAlerts', skiprows=range(0, 4))
+    excel_data_df = pd.read_excel('Alerts.xlsx', sheet_name='UCSAlerts', skiprows=range(0, 4), engine='openpyxl')
     json_str = excel_data_df.to_json(orient='records')
     parsed = json.loads(json_str)
     with open('Alerts.json', 'w') as f:
