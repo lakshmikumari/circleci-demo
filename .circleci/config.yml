@@ -1,5 +1,7 @@
 version: 2.1
 
+orbs:
+  python: circleci/python@2.1.1
 jobs:
   build:
     working_directory: ~/circleci-demo
@@ -7,8 +9,9 @@ jobs:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      - run: pip3 install pandas
-       
+      - python/install-packages:
+          pkg-manager: pip
+            
       - run: python3 main.py
   test:
     working_directory: ~/circleci-demo
