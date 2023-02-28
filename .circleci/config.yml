@@ -13,13 +13,14 @@ jobs:
       #    pkg-manager: pip
       - run: sudo pip3 install pandas
             
-      - run: python3 --version
+      - run: python3 main.py
   test:
     working_directory: ~/circleci-demo
     docker:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
+      - run: sudo pip3 install pandas
       - run: python3 main_test.py
 
 workflows:
