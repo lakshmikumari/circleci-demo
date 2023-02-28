@@ -11,7 +11,7 @@ jobs:
       - checkout
       #- python/install-packages:
       #    pkg-manager: pip
-      - run: sudo pip3 install pandas xlrd
+      - run: sudo pip3 install pandas openpyxl
             
       - run: python3 main.py
   test:
@@ -20,7 +20,7 @@ jobs:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      - run: sudo pip3 install pandas xlrd
+      - run: sudo pip3 install pandas openpyxl
       - run: python3 main_test.py
 
 workflows:
