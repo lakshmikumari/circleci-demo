@@ -1,41 +1,21 @@
 version: 2.1
-
 orbs:
   python: circleci/python@2.1.1
   
-  
 jobs:
-  build:
-   
-    docker:
-      - image: "circleci/python:3.6.4"
-    working_directory:  ~/circleci-demo
+  build_and_test: # this can be any name you choose
+    executor: python/default
     steps:
       - checkout
-      #- python/install-packages:
-      #    pkg-manager: pip
-      #- python/install-packages:
-      #    pip-dependency-file: requirements.txt
-      #    pkg-manager: pip
-      - run: sudo pip3 install beautifulsoup4
-      #-run:
-      #   name : build the application
-      #   command : python3 main.py
-            
-      - run: python3 main.py
-  test:
-    working_directory: ~/circleci-demo
-    docker:
-      - image: "circleci/python:3.6.4"
-    steps:
-      - checkout
-      - run: sudo pip3 install beautifulsoup4 
-      - run: python3 main_test.py
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run application
+          command: python3 main.py
+      
 
+  
 workflows:
-  build_and_test:
+  test_my_app:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - build_and_test
