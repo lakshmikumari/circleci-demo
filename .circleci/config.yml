@@ -1,7 +1,9 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@2.1.1
+  python: circleci/python@2.0.3
+  
+  
 jobs:
   build:
     working_directory: ~/circleci-demo
@@ -9,12 +11,12 @@ jobs:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      #- python/install-packages:
-      #    pkg-manager: pip
-      - run: sudo pip3 install beautifulsoup4
-      #-run:
-      #   name : build the application
-      #   command : python3 main.py
+      - python/install-packages:
+          pkg-manager: pip
+      #- run: sudo pip3 install beautifulsoup4
+      -run:
+         name : build the application
+         command : python3 main.py
             
       - run: python3 main.py
   test:
