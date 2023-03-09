@@ -6,9 +6,10 @@ orbs:
   
 jobs:
   build:
-    working_directory: ~/circleci-demo
+   
     docker:
       - image: "circleci/python:3.6.4"
+    working_directory: /tmp
     steps:
       - checkout
       #- python/install-packages:
