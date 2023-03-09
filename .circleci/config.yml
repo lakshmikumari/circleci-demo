@@ -7,19 +7,19 @@ orbs:
 jobs:
   build:
     working_directory: ~/circleci-demo
-    #docker:
-    #  - image: "circleci/python:3.6.4"
+    docker:
+      - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
-      - python/install-packages:
-          pip-dependency-file: requirements.txt
-          pkg-manager: pip
-      #- run: sudo pip3 install beautifulsoup4
-      -run:
-         name : build the application
-         command : python3 main.py
+      #- python/install-packages:
+      #    pkg-manager: pip
+      #- python/install-packages:
+      #    pip-dependency-file: requirements.txt
+      #    pkg-manager: pip
+      - run: sudo pip3 install beautifulsoup4
+      #-run:
+      #   name : build the application
+      #   command : python3 main.py
             
       - run: python3 main.py
   test:
