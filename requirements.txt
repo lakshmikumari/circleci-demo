@@ -1,1 +1,1 @@
-pandas
+beautifulsoup4
